@@ -1,24 +1,29 @@
 <?php
 include 'connect.php';
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
-if($_GET['desklap'] == 1) {
+if($_GET['desklap'] == 1 && isset($_GET['list']) == NULL) {
 	$sql = "SELECT * FROM `desktop`";
 	if ($result = $mysqli->query($sql)) {
-	    while ($row = $result->fetch_assoc()) {
-	        $cat[] = $row;
-	    }
-	    echo json_encode($cat);
-	    $result->free();
+		    while ($row = $result->fetch_assoc()) {
+		        $cat[] = $row;
+		    }
+		    echo json_encode($cat);
+		    $result->free();
+		}
 	}
-}
 
-$sql = "SELECT * FROM `desktop`";
+	
+if($_GET['desklap'] == 1 && isset($_GET['list']) != NULL) {
+	$mylist = strtolower($_GET['list']);
 
-if ($result = $mysqli->query($sql)) {
-    while ($row = $result->fetch_assoc()) {
-        $cat[] = $row;
-    }
-    echo json_encode($cat);
-    $result->free();
-}
+	$sql = "desc `$mylist`";
+	if ($result = $mysqli->query($sql)) {
+		    while ($row = $result->fetch_assoc()) {
+		        $cat[] = $row;
+		    }
+		    echo json_encode($cat);
+		    $result->free();
+		}
+	} 
 ?>

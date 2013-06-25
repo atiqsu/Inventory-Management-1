@@ -1,16 +1,4 @@
 <?php
-/*
-if (isset($_GET['day']) && isset($_GET['date']) && isset($_GET['year'])) {
-	$day = htmlentities($_GET['day']);
-	$date = htmlentities($_GET['date']);
-	$year = htmlentities($_GET['year']);
-	if (!empty($day)&& !empty($date)&& !empty($year)) {
-		echo 'It\'s '. $day . ' ' .$date .' ' .$year;
-	} else {
-		echo "please fill in all feilds.";
-	}
-} 
-*/
 ?>
 <html>
 <head>
@@ -25,11 +13,9 @@ $(document).ready(function(){
 
 var sel = $("select#desklap");
 $(sel).change(function(){
-	var str = "";
-	$("#list").hide().empty();
 	$("select option:selected").each(function () {
 		if($(this).text() == "Desktop") {
-			$.getJSON("select.php", function(data){
+			$.getJSON("select.php?desklap=" + $(this).val(), function(data){
 				var opt = [];
 				$.each(data, function(key, val){
 					opt.push('<option id="'+ key + '">' + val.category + '</option>');
@@ -38,23 +24,40 @@ $(sel).change(function(){
 					$("#message").empty();
 			});
 			} else if($(this).text() == "Laptop") {
-				$("#list").show().html("<option>I'm working on it</option>");
+				$("#list").show().html("<option>nope</option>");
 				$("#message").html("<p>I'm working on it</p>");
 			}
   		});
 	});
+$("select#list").change(function(){
+	$("select#list option:selected").each(function () {
+		var sub = $(this).text();
+		$.getJSON("select.php?desklap=1&list=" + sub, function(data){
+			var opt = [];
+			$.each(data, function(key, val){
+				///////make select box/multi select checkbox factory here/////////
+				opt.push('<option id="'+ key + '">' + val.Field + '</option>');
+			});
+				$("#sub").show().html(opt);
+				$("#message").empty();
+				console.log(opt);
+		});
+	});
+})
+
 }); //ready
 </script>
 
 </script>
 <form action="index.php" method="GET">
 	<label for="catag">Catagory: </label> 
-	<select name="desklap" id="desklap" name="catagory">
+	<select name="desklap" id="desklap">
 		<option value="1">Desktop</option>
 	    <option value="2">Laptop</option>
     </select>
 
-    <select name="list" id="list"name="catagory"></select>
+    <select name="list" id="list"></select>
+    <select name="sub" id="sub"></select>
 	<input type="submit" value="Select">
 </form>
 <div id="message"></div>
