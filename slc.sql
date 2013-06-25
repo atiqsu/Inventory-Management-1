@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 18, 2013 at 11:55 PM
+-- Generation Time: Jun 25, 2013 at 08:35 AM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.3.13
 
@@ -19,6 +19,40 @@ SET time_zone = "+00:00";
 --
 -- Database: `slc`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cases/chassis`
+--
+
+CREATE TABLE IF NOT EXISTS `cases/chassis` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Type` varchar(50) NOT NULL,
+  `Price` int(11) NOT NULL,
+  `Manufacturer` varchar(50) NOT NULL,
+  `Color` varchar(50) NOT NULL,
+  `Case Material` varchar(50) NOT NULL,
+  `With Power Supply` tinyint(1) NOT NULL,
+  `Power Supply` varchar(50) NOT NULL,
+  `Side Panel Window` tinyint(1) NOT NULL,
+  `PSU Mount` varchar(11) NOT NULL,
+  `Ext 3.5 Bays` int(11) NOT NULL,
+  `Ext 5.25 Bays` int(11) NOT NULL,
+  `Int 3.5 Bays` int(11) NOT NULL,
+  `Int 5.25 Bays` int(11) NOT NULL,
+  `80mm Fans` int(11) NOT NULL,
+  `120mm Fans` int(11) NOT NULL,
+  `250mm Fans` int(11) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `cases/chassis`
+--
+
+INSERT INTO `cases/chassis` (`ID`, `Type`, `Price`, `Manufacturer`, `Color`, `Case Material`, `With Power Supply`, `Power Supply`, `Side Panel Window`, `PSU Mount`, `Ext 3.5 Bays`, `Ext 5.25 Bays`, `Int 3.5 Bays`, `Int 5.25 Bays`, `80mm Fans`, `120mm Fans`, `250mm Fans`) VALUES
+(1, 'ATX', 40, 'Antec', 'Blk', 'Alluminum', 1, 'Corsair CS500', 1, 'Bottom', 0, 0, 5, 3, 2, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -65,6 +99,56 @@ INSERT INTO `desktop` (`id`, `category`) VALUES
 (26, 'Tools'),
 (27, 'Video Cards & Video Devices'),
 (28, 'Web Cams');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hard drives`
+--
+
+CREATE TABLE IF NOT EXISTS `hard drives` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `PRICE` int(11) NOT NULL,
+  `MANUFACTURER` varchar(50) NOT NULL,
+  `INTERFACE` varchar(50) NOT NULL,
+  `RPM SPEED` int(11) NOT NULL,
+  `CACHE` int(11) NOT NULL,
+  `FORM FACTOR` varchar(50) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `video cards`
+--
+
+CREATE TABLE IF NOT EXISTS `video cards` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Quantity` int(11) NOT NULL,
+  `Price` int(11) NOT NULL,
+  `Manufacturer` varchar(50) NOT NULL,
+  `Chipset` varchar(50) NOT NULL,
+  `Form Factor` varchar(50) NOT NULL,
+  `RAM Type` varchar(50) NOT NULL,
+  `Interface` varchar(50) NOT NULL,
+  `GPU` varchar(50) NOT NULL,
+  `Memory Interface` int(11) NOT NULL,
+  `Direct X` int(11) NOT NULL,
+  `Low Profile Bracket Included` tinyint(1) NOT NULL,
+  `DVI` varchar(50) NOT NULL,
+  `HDMI` varchar(50) NOT NULL,
+  `DSUB` varchar(50) NOT NULL,
+  `Display Port` varchar(50) NOT NULL,
+  `TV Out` varchar(50) NOT NULL,
+  `Crossfire X Support` tinyint(1) NOT NULL,
+  `SLI Support` tinyint(1) NOT NULL,
+  `Cooler` tinyint(1) NOT NULL,
+  `HDCP Ready` tinyint(1) NOT NULL,
+  `Tuner` tinyint(1) NOT NULL,
+  `Max Resolution` varchar(50) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
