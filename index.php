@@ -34,13 +34,15 @@ $("select#list").change(function(){
 		var sub = $(this).text();
 		$.getJSON("select.php?desklap=1&list=" + sub, function(data){
 			var opt = [];
+			var int11 = [];
 			$.each(data, function(key, val){
-				///////make select box/multi select checkbox factory here/////////
-				opt.push('<option id="'+ key + '">' + val.Field + '</option>');
+					int11.push('<dd id="searchDropDownList">' +
+						       '<label for="descrip'+ key + '">' + this.Field + ': </label>' + 
+							   '<select name="descrip'+ key +'" id="descrip' + key + '"></select>' +
+							   '</dd>');
 			});
-				$("#sub").show().html(opt);
 				$("#message").empty();
-				console.log(opt);
+				$("#searchDropDownListBig").empty().append(int11);
 		});
 	});
 })
@@ -49,15 +51,16 @@ $("select#list").change(function(){
 </script>
 
 </script>
-<form action="index.php" method="GET">
-	<label for="catag">Catagory: </label> 
+<form id="searchDropDownList" action="index.php" method="GET">
+	<label for="catag">Category: </label> 
 	<select name="desklap" id="desklap">
+		<option value="0">Other</option>
 		<option value="1">Desktop</option>
 	    <option value="2">Laptop</option>
     </select>
 
     <select name="list" id="list"></select>
-    <select name="sub" id="sub"></select>
+    <dl id="searchDropDownListBig"><dl>
 	<input type="submit" value="Select">
 </form>
 <div id="message"></div>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 25, 2013 at 08:35 AM
+-- Generation Time: Jun 26, 2013 at 10:23 AM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.3.13
 
@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cases/chassis`
+-- Table structure for table `cases`
 --
 
-CREATE TABLE IF NOT EXISTS `cases/chassis` (
+CREATE TABLE IF NOT EXISTS `cases` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Type` varchar(50) NOT NULL,
   `Price` int(11) NOT NULL,
@@ -48,10 +48,10 @@ CREATE TABLE IF NOT EXISTS `cases/chassis` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `cases/chassis`
+-- Dumping data for table `cases`
 --
 
-INSERT INTO `cases/chassis` (`ID`, `Type`, `Price`, `Manufacturer`, `Color`, `Case Material`, `With Power Supply`, `Power Supply`, `Side Panel Window`, `PSU Mount`, `Ext 3.5 Bays`, `Ext 5.25 Bays`, `Int 3.5 Bays`, `Int 5.25 Bays`, `80mm Fans`, `120mm Fans`, `250mm Fans`) VALUES
+INSERT INTO `cases` (`ID`, `Type`, `Price`, `Manufacturer`, `Color`, `Case Material`, `With Power Supply`, `Power Supply`, `Side Panel Window`, `PSU Mount`, `Ext 3.5 Bays`, `Ext 5.25 Bays`, `Int 3.5 Bays`, `Int 5.25 Bays`, `80mm Fans`, `120mm Fans`, `250mm Fans`) VALUES
 (1, 'ATX', 40, 'Antec', 'Blk', 'Alluminum', 1, 'Corsair CS500', 1, 'Bottom', 0, 0, 5, 3, 2, 1, 0);
 
 -- --------------------------------------------------------
@@ -97,7 +97,7 @@ INSERT INTO `desktop` (`id`, `category`) VALUES
 (24, 'Soundcards, Speakers & Headsets'),
 (25, 'SSD'),
 (26, 'Tools'),
-(27, 'Video Cards & Video Devices'),
+(27, 'Video Cards'),
 (28, 'Web Cams');
 
 -- --------------------------------------------------------
